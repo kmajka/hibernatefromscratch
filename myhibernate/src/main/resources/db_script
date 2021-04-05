@@ -1,0 +1,133 @@
+//create user in mySQl
+CREATE USER 'user1'@'localhost' IDENTIFIED WITH mysql_native_password BY 'user1';
+
+GRANT ALL PRIVILEGES ON * . * TO 'user1'@'localhost';
+
+
+@OneToOne
+
+
+CREATE DATABASE IF NOT EXISTS `bazatestowa2`;
+
+USE `bazatestowa2`;
+
+CREATE TABLE IF NOT EXISTS company_detail (
+
+    company_detail_id INT AUTO_INCREMENT,
+
+    created DATE, 
+
+    country VARCHAR(40), 
+
+    PRIMARY KEY (company_detail_id)
+
+) ENGINE=InnoDB;
+
+
+
+CREATE TABLE IF NOT EXISTS company (
+
+    company_id INT AUTO_INCREMENT,
+
+    company_name VARCHAR(40) DEFAULT NULL,
+
+    PRIMARY KEY (company_id),
+
+    company_detail_id INT,
+
+    CONSTRAINT FK_COMPANY_COMPANYDETAIL FOREIGN KEY (company_detail_id) REFERENCES company_detail (company_detail_id)
+
+) ENGINE=InnoDB;
+
+//////////////////////////////////////////////////////////////////
+
+@OneToMany
+
+CREATE DATABASE IF NOT EXISTS `bazatestowa2`;
+
+USE `bazatestowa2`;
+
+CREATE TABLE IF NOT EXISTS owner (
+
+    owner_id INT AUTO_INCREMENT,
+
+    full_name VARCHAR(40) DEFAULT NULL,
+
+    PRIMARY KEY (owner_id)
+
+) ENGINE=InnoDB;
+
+
+
+CREATE TABLE IF NOT EXISTS car (
+
+    car_id INT AUTO_INCREMENT,
+
+    brand VARCHAR(40) DEFAULT NULL,
+
+    owner_id INT,
+
+    PRIMARY KEY (car_id),
+
+    CONSTRAINT FK_OWNER_CAR FOREIGN KEY (owner_id) REFERENCES owner (owner_id)
+
+) ENGINE=InnoDB;
+
+//////////////////////////////////////////////////////////////////////
+
+@ManyToMany
+
+CREATE DATABASE IF NOT EXISTS `bazatestowa2`;
+
+USE `bazatestowa2`;
+
+CREATE TABLE IF NOT EXISTS recipe (
+
+    recipe_id INT AUTO_INCREMENT,
+
+    recipe_name VARCHAR(40) DEFAULT NULL,
+
+    PRIMARY KEY (recipe_id)
+
+) ENGINE=InnoDB;
+
+
+
+CREATE TABLE IF NOT EXISTS ingredient (
+
+    ingredient_id INT AUTO_INCREMENT,
+
+    ingredient_name VARCHAR(40) DEFAULT NULL,
+
+    recipe_id INT,
+
+    PRIMARY KEY (ingredient_id)
+
+) ENGINE=InnoDB;
+
+
+
+CREATE TABLE IF NOT EXISTS recipe_ingredient (
+
+    recipe_id int NOT NULL,
+
+    ingredient_id int NOT NULL,
+
+    PRIMARY KEY (recipe_id, ingredient_id),
+
+    CONSTRAINT FK_RECIPE FOREIGN KEY (recipe_id) 
+
+    REFERENCES recipe (recipe_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+
+    CONSTRAINT FK_INGREDIENT FOREIGN KEY (ingredient_id) 
+
+    REFERENCES ingredient (ingredient_id) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+) ENGINE=InnoDB;
+
+
+
+
+
+
+
