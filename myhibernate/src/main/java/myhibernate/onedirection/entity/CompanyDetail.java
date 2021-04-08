@@ -49,5 +49,11 @@ public class CompanyDetail {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	@Override
+	public String toString() {
+		return "CompanyDetail [companyDetailId=" + companyDetailId + ", created=" + created + ", country=" + country
+				+ "]";
+	}	
 	
 }

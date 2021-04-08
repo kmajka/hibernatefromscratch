@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class CompanyDetail {
 	@Column(name="country")
 	private String country;
 	
-	@OneToOne(mappedBy="companyDetail", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@OneToOne(mappedBy="companyDetail", cascade= CascadeType.ALL)
 	private Company company;
 
 	public Integer getCompanyDetailId() {
@@ -61,6 +62,12 @@ public class CompanyDetail {
 
 	public void setCompany(Company company) {
 		this.company = company;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "CompanyDetail [companyDetailId=" + companyDetailId + ", created=" + created + ", country=" + country
+				+ "]";
+	}
 	
 }

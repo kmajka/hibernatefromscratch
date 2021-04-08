@@ -49,5 +49,10 @@ public class Company {
 	public void setCompanyDetail(CompanyDetail companyDetail) {
 		this.companyDetail = companyDetail;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Company [companyId=" + companyId + ", companyName=" + companyName + "]";
+	}
+		
 }
