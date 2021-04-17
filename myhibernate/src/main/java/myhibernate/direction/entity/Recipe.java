@@ -30,7 +30,7 @@ public class Recipe {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH })
 	@JoinTable(name = "recipe_ingredient", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-	List<Ingredient> ingeredients;
+	List<Ingredient> ingredients;
 
 	public Recipe() {	
 	}
@@ -47,19 +47,19 @@ public class Recipe {
 		this.recipeName = recipeName;
 	}
 
-	public List<Ingredient> getIngeredients() {
-		return ingeredients;
+	public List<Ingredient> getIngredients() {
+		return ingredients;
 	}
 
-	public void addIngeredient(Ingredient ingredient) {
-		if (ingeredients == null) {
-			ingeredients = new ArrayList<Ingredient>();
+	public void addIngredient(Ingredient ingredient) {
+		if (ingredients == null) {
+			ingredients = new ArrayList<Ingredient>();
 		}
-		ingeredients.add(ingredient);
+		ingredients.add(ingredient);
 	}
 
-	public void setIngeredients(List<Ingredient> ingeredients) {
-		this.ingeredients = ingeredients;
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 
 	@Override

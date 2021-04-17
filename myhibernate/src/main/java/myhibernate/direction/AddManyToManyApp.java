@@ -28,14 +28,14 @@ public class AddManyToManyApp {
 		
 		//create recipes
 		Recipe recipe1 = new Recipe("sernik");
-		recipe1.addIngeredient(ingredient1);
-		recipe1.addIngeredient(ingredient2);
-		recipe1.addIngeredient(ingredient3);
+		recipe1.addIngredient(ingredient1);
+		recipe1.addIngredient(ingredient2);
+		recipe1.addIngredient(ingredient3);
 		
 		Recipe recipe2 = new Recipe("tort czekoladowy");
-		recipe2.addIngeredient(ingredient1);
-		recipe2.addIngeredient(ingredient2);
-		recipe2.addIngeredient(ingredient4);
+		recipe2.addIngredient(ingredient1);
+		recipe2.addIngredient(ingredient2);
+		recipe2.addIngredient(ingredient4);
 
 		//utrwalenie obiektu w bazie
 		session.persist(recipe1);
